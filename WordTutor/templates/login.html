@@ -4,25 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="../static/plugin/bootstrap.css" />
-    <link rel="stylesheet" href="../static/css/login.css" />
+    <link rel="stylesheet" href="../static/plugin/bootstrap.css"/>
+    <link rel="stylesheet" href="../static/css/login.css"/>
 </head>
 <body>
-    <div class="login_box">
-        <div class="login">
-            <div class="login_logo">
-                <img src="../static/images/user_logo.png">
-            </div>
-            <div class="login_name">
-                <img src="../static/images/logo.jpg" />
-            </div>
-            <form method="post">
-                <input name="username" type="text"  placeholder="用户名" />
-                <input name="password" type="password" placeholder="密码" />
-                <input value="登录" type="button">
-                <a href="register">注册账号</a>
-            </form>
+<div class="login_box">
+    <div class="login">
+        <div class="login_logo ">
+            <img src="../static/images/user_logo.png">
         </div>
+        <div class="login_name">
+            <img src="../static/images/logo.jpg"/>
+        </div>
+        <form method="post">
+            <div class="form-group">
+                <input name="username" type="text" class="form-control" placeholder="用户名"/>
+                <input name="password" type="password" class="form-control" placeholder="密码"/>
+                <input value="登录" type="button" class="btn btn-primary"/>
+            </div>
+            <a href="register">注册账号</a>
+        </form>
     </div>
+</div>
 </body>
 </html>

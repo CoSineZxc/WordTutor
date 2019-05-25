@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>homepage</title>
+    <link rel="stylesheet" href="../static/plugin/bootstrap.css"/>
+    <link rel="stylesheet" href="../static/css/main.css"/>
+    <script src="../static/plugin/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <!--导航栏-->
+    <div class="navbar navbar-default">
+        <div class="col-md-2">
+            <div class="navbar-header">
+                <a href="#" class="navbar-brand"><img src="../static/images/logo_tran.jpg"/></a>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <ul class="nav navbar-nav navbar-left">
+                <li><a href="#">单词书</a></li>
+                <li><a href="#">单词本</a></li>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="login">退出登录</a></li>
+                <li><a href="#">用户名</a></li>
+                <li><a href="#"><img src="../static/images/user_default.jpg" class="img-circle img-userlogo"/></a></li>
+            </ul>
+        </div>
+    </div>
+    <!--用户基本信息栏-->
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-body">
+                <div class="col-md-3">
+                    <img src="../static/images/user_default.jpg" class="img-circle">
+                </div>
+                <div class="col-md-9">
+                    <p>用户名：</p>
+                    <p>个性签名：</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                单词书
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>单词书</th>
+                        <th>完成度</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>四级单词</td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                                    <span class="sr-only">40% 完成</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>托福单词</td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
+                                    <span class="sr-only">40% 完成</span>
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer">
+                <a href="#" class="small">编辑单词书</a>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                单词本
+            </div>
+            <div class="panel-body">
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th>单词本</th>
+                        <th>创建时间</th>
+                        <th>单词数量</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td>三月错词本</td>
+                        <td>2019/03</td>
+                        <td>55</td>
+                    </tr>
+                    <tr>
+                        <td>托福错词本</td>
+                        <td>2019/01</td>
+                        <td>77</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="panel-footer">
+                <a href="#" class="small">编辑单词本</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        ©2019 Zheng Xuanci. All rights reserved.
+    </div>
+</div>
+</body>
+</html>
