@@ -7,3 +7,12 @@ def login(request):
 
 def register(request):
     return render(request,'register.html')
+
+def homepage(request):
+    return render(request,'homepage.html')
+
+def vocabubook(request):
+    return render(request,'vocabubook.html')
+
+def vocabunote(request):
+    return render(request,'vocabunote.html')

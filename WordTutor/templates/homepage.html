@@ -6,6 +6,7 @@
     <title>homepage</title>
     <link rel="stylesheet" href="../static/plugin/bootstrap.css"/>
     <link rel="stylesheet" href="../static/css/main.css"/>
+    <script src="../static/plugin/jquery-3.4.0.min.js"></script>
     <script src="../static/plugin/bootstrap.min.js"></script>
 </head>
 <body>
@@ -32,7 +33,7 @@
         </div>
     </div>
     <!--用户基本信息栏-->
-    <div class="col-md-12">
+    <div>
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="col-md-3">
@@ -43,12 +44,53 @@
                     <p>个性签名：</p>
                 </div>
                 <div class="col-md-2">
-                    <a href="#" class="small">编辑个人信息</a>
+                    <a class="small" data-toggle="modal" data-target="#ChgUserInfo">
+                        编辑个人信息
+                    </a>
+                    <!-- 模态框（Modal） -->
+                    <div class="modal fade" id="ChgUserInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        用户信息修改
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label>修改头像</label>
+                                            <input type="file" class="form-control" placeholder="选择新头像"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>修改用户名</label>
+                                            <input type="text" class="form-control" placeholder="输入新昵称">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>修改个性签名</label>
+                                            <input type="text" class="form-control" placeholder="输入新个性签名">
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                    </button>
+                                    <button type="button" class="btn btn-primary">
+                                        提交更改
+                                    </button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="col-md-12">
+    <div>
         <div class="panel panel-default">
             <div class="panel-heading">
                 单词书
@@ -91,7 +133,33 @@
                 </table>
             </div>
             <div class="panel-footer">
-                <a href="#" class="small">编辑单词书</a>
+                <!--写到这里了，再添加一下单词书和单词本的模态框-->
+                <a href="#" class="small" data-toggle="modal" data-target="#ChgBookSetInfo">编辑单词书</a>
+                <div class="modal fade" id="ChgBookSetInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                在这里添加一些文本
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                </button>
+                                <button type="button" class="btn btn-primary">
+                                    提交更改
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
             </div>
         </div>
         <div class="panel panel-default">
