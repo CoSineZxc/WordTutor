@@ -4,7 +4,10 @@ from django.db import models
 # Create your models here.
 class userinfo(models.Model):
     username = models.CharField("用户名", max_length=20)
-    password = models.CharField("密码", max_length=30)
+    password = models.CharField("密码", max_length=50)
+    ifheadimg= models.BooleanField("是否有头像",default=False)
+    slogan=models.CharField("个性签名", max_length=200,default='')
+
 
     def __str__(self):  # 设置在django后台显示字段名称
         return self.username

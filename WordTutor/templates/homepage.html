@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="../static/css/main.css"/>
     <script src="../static/plugin/jquery-3.4.0.min.js"></script>
     <script src="../static/plugin/bootstrap.min.js"></script>
+    <script src="../static/js/homepage.js"></script>
 </head>
-<body>
+<body onload="initial_interface()">
 <div class="container">
     <!--导航栏-->
     <div class="navbar navbar-default">
         <div class="col-md-2">
             <div class="navbar-header">
-                <a href="#" class="navbar-brand"><img src="../static/images/logo_tran.jpg"/></a>
+                <a href="" class="navbar-brand"><img src="../static/images/logo_tran.jpg"/></a>
             </div>
         </div>
         <div class="col-md-6">
@@ -26,9 +27,10 @@
         </div>
         <div class="col-md-4">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="login">退出登录</a></li>
-                <li><a href="#">用户名</a></li>
-                <li><a href="#"><img src="../static/images/user_default.jpg" class="img-circle img-userlogo"/></a></li>
+                <li><a href="../login/">退出登录</a></li>
+                <li><a href="../homepage/"><p id="txt_username">用户名</p></a></li>
+                <li><a href="../homepage/"><img src="../static/images/user_default.jpg" class="img-circle img-userlogo"
+                                                id="img_icon"/></a></li>
             </ul>
         </div>
     </div>
@@ -37,18 +39,32 @@
         <div class="panel panel-default">
             <div class="panel-body">
                 <div class="col-md-3">
-                    <img src="../static/images/user_default.jpg" class="img-circle">
+                    <img src="../static/images/user_default.jpg" class="img-circle" id="img_icon_detial"/>
                 </div>
                 <div class="col-md-7">
                     <p>用户名：</p>
+                    <p id="txt_username_detail"></p>
                     <p>个性签名：</p>
+                    <p id="txt_userslogan"></p>
                 </div>
                 <div class="col-md-2">
-                    <a class="small" data-toggle="modal" data-target="#ChgUserInfo">
-                        编辑个人信息
-                    </a>
+                    <div>
+                        <a class="small" data-toggle="modal" data-target="#ChgUserHead">
+                            编辑头像
+                        </a>
+                    </div>
+                    <div>
+                        <a class="small" data-toggle="modal" data-target="#ChgUserName">
+                            编辑用户名
+                        </a>
+                    </div>
+                    <div>
+                        <a class="small" data-toggle="modal" data-target="#ChgUserSlogan">
+                            编辑个性签名
+                        </a>
+                    </div>
                     <!-- 模态框（Modal） -->
-                    <div class="modal fade" id="ChgUserInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    <div class="modal fade" id="ChgUserHead" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                          aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -64,22 +80,102 @@
                                     <form role="form">
                                         <div class="form-group">
                                             <label>修改头像</label>
-                                            <input type="file" class="form-control" placeholder="选择新头像"/>
+                                            <input type="file" class="form-control" placeholder="选择新头像" id="newimg"/>
                                         </div>
-                                        <div class="form-group">
+                                        <!--div class="form-group">
                                             <label>修改用户名</label>
-                                            <input type="text" class="form-control" placeholder="输入新昵称">
+                                            <input type="text" class="form-control" placeholder="输入新昵称" id="newname">
                                         </div>
                                         <div class="form-group">
                                             <label>修改个性签名</label>
-                                            <input type="text" class="form-control" placeholder="输入新个性签名">
+                                            <input type="text" class="form-control" placeholder="输入新个性签名"
+                                                   id="newslogan">
+                                        </div-->
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="ChgUserHead()">
+                                        提交更改
+                                    </button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
+                    <div class="modal fade" id="ChgUserName" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        用户信息修改
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form">
+                                        <!--div class="form-group">
+                                            <label>修改头像</label>
+                                            <input type="file" class="form-control" placeholder="选择新头像" id="newimg"/>
+                                        </div-->
+                                        <div class="form-group">
+                                            <label>修改用户名</label>
+                                            <input type="text" class="form-control" placeholder="输入新昵称" id="newname">
+                                        </div>
+                                        <!--div class="form-group">
+                                            <label>修改个性签名</label>
+                                            <input type="text" class="form-control" placeholder="输入新个性签名"
+                                                   id="newslogan">
+                                        </div-->
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                    </button>
+                                    <button type="button" class="btn btn-primary" onclick="ChgUserName()">
+                                        提交更改
+                                    </button>
+                                </div>
+                            </div><!-- /.modal-content -->
+                        </div><!-- /.modal -->
+                    </div>
+                    <div class="modal fade" id="ChgUserSlogan" tabindex="-1" role="dialog"
+                         aria-labelledby="myModalLabel"
+                         aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                        &times;
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        用户信息修改
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    <form role="form">
+                                        <!--div class="form-group">
+                                            <label>修改头像</label>
+                                            <input type="file" class="form-control" placeholder="选择新头像" id="newimg"/>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>修改用户名</label>
+                                            <input type="text" class="form-control" placeholder="输入新昵称" id="newname">
+                                        </div-->
+                                        <div class="form-group">
+                                            <label>修改个性签名</label>
+                                            <input type="text" class="form-control" placeholder="输入新个性签名"
+                                                   id="newslogan">
                                         </div>
                                     </form>
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭
                                     </button>
-                                    <button type="button" class="btn btn-primary">
+                                    <button type="button" class="btn btn-primary" onclick="ChgUserSlogan()">
                                         提交更改
                                     </button>
                                 </div>
@@ -104,37 +200,24 @@
                         <th>完成度</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
+                    <tbody id="tbdata_book">
+                    <!--tr>
                         <td>四级单词</td>
                         <td>4000</td>
                         <td>
                             <div class="progress">
                                 <div class="progress-bar" role="progressbar" aria-valuenow="60"
-                                     aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                                    <span class="sr-only">40% 完成</span>
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
                                 </div>
                             </div>
                         </td>
-                    </tr>
-                    <tr>
-                        <td>托福单词</td>
-                        <td>5000</td>
-                        <td>
-                            <div class="progress">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="60"
-                                     aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                                    <span class="sr-only">40% 完成</span>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
+                    </tr-->
                     </tbody>
                 </table>
             </div>
             <div class="panel-footer">
-                <!--写到这里了，再添加一下单词书和单词本的模态框-->
-                <a href="#" class="small" data-toggle="modal" data-target="#ChgBookSetInfo">编辑单词书</a>
+                <a href="#" class="small" data-toggle="modal" data-target="#ChgBookSetInfo"
+                   onclick="Init_book_popwindows()">编辑单词书</a>
                 <div class="modal fade" id="ChgBookSetInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog">
@@ -144,18 +227,65 @@
                                     &times;
                                 </button>
                                 <h4 class="modal-title" id="myModalLabel">
-
+                                    编辑单词书
                                 </h4>
                             </div>
-                            <div class="modal-body">
-                                在这里添加一些文本
+                            <!--div class="modal-body"-->
+                            <div>
+                                <div class="col-lg-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="panel-title">
+                                                已添加单词书
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div style=" overflow-y:auto; overflow-x:auto;  height:100px;">
+                                                <div class="list-group" id="table_have_book">
+                                                    <!--div>
+                                                        <div class="col-xs-8">四级单词</div>
+                                                        <div class="col-xs-4"><a>&times;</a></div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="col-xs-8">六级单词</div>
+                                                        <div class="col-xs-4"><a>&times;</a></div>
+                                                    </div-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <div class="panel-title">
+                                                未添加单词书
+                                            </div>
+                                        </div>
+                                        <div class="panel-body">
+                                            <div style=" overflow-y:auto; overflow-x:auto;  height:100px;">
+                                                <div class="list-group" id="table_unhave_book">
+                                                    <!--div>
+                                                        <div class="col-xs-8">托福单词</div>
+                                                        <div class="col-xs-4"><a>+</a></div>
+                                                    </div>
+                                                    <div>
+                                                        <div class="col-xs-8">雅思单词</div>
+                                                        <div class="col-xs-4"><a>+</a></div>
+                                                    </div-->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="modal-footer">
-                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    关闭
                                 </button>
-                                <button type="button" class="btn btn-primary">
+                                <!--button type="button" class="btn btn-primary">
                                     提交更改
-                                </button>
+                                </button-->
                             </div>
                         </div><!-- /.modal-content -->
                     </div><!-- /.modal -->
@@ -171,26 +301,81 @@
                     <thead>
                     <tr>
                         <th>单词本</th>
-                        <th>创建时间</th>
-                        <th>单词数量</th>
+                        <th>单词数</th>
+                        <th>完成度</th>
                     </tr>
                     </thead>
-                    <tbody>
-                    <tr>
-                        <td>三月错词本</td>
-                        <td>2019/03</td>
-                        <td>55</td>
-                    </tr>
-                    <tr>
-                        <td>托福错词本</td>
-                        <td>2019/01</td>
-                        <td>77</td>
-                    </tr>
+                    <tbody id="tbdata_note">
+                    <!--tr>
+                        <td>四级错词</td>
+                        <td>40</td>
+                        <td>
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar" aria-valuenow="60"
+                                     aria-valuemin="0" aria-valuemax="100" style="width: 5%;">
+                                </div>
+                            </div>
+                        </td>
+                    </tr-->
                     </tbody>
                 </table>
             </div>
             <div class="panel-footer">
-                <a href="#" class="small">编辑单词本</a>
+                <a href="#" class="small" data-toggle="modal" data-target="#ChgNoteSetInfo" onclick="Init_note_popwindows()">编辑单词本</a>
+                <div class="modal fade" id="ChgNoteSetInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    编辑单词本
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            已创建单词本
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div style=" overflow-y:auto; overflow-x:auto;  height:100px;">
+                                            <div class="list-group" id="table_have_note">
+                                                <!--div>
+                                                    <div class="col-xs-8">四级错词</div>
+                                                    <div class="col-xs-4"><button class='btn btn-xs' onclick=''>&times;</button></div>
+                                                </div>
+                                                <div>
+                                                    <div class="col-xs-8">三月单词</div>
+                                                    <div class="col-xs-4"><button class='btn btn-xs' onclick=''>&times;</button></div>
+                                                </div-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label>新建单词本</label>
+                                            <input type="text" class="form-control" placeholder="输入单词本名" id="newnote">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    关闭
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="add_note()">
+                                    创建
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
             </div>
         </div>
     </div>
