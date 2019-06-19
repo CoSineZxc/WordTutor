@@ -1,8 +1,12 @@
 function initial_interface() {
+    var userid=$.cookie("userid");
+    //alert(username);
+    var form_data = new FormData();
+    form_data.append("userid",userid);
     $.ajax({
         type: "POST",
         url: "/sethomepage/",
-        data: 1,
+        data: form_data,
         processData: false,
         contentType: false,
         success: function (returndata) {
@@ -48,6 +52,7 @@ function initial_interface() {
 }
 
 function ChgUserHead() {
+    var userid=$.cookie("userid");
     var form_data = new FormData();
     var file_info = $("#newimg")[0].files[0];
     var ftype = $("#newimg").val();
@@ -59,6 +64,7 @@ function ChgUserHead() {
         return;
     }
     form_data.append('headimg', file_info);
+    form_data.append('userid', userid);
     $.ajax({
         type: "POST",
         url: "/chg_userhead/",
@@ -67,6 +73,7 @@ function ChgUserHead() {
         contentType: false,
         success: function (returndata) {
             alert(returndata);
+            open("../homepage/", "_self");
         },
         error: function (returndata) {
             alert("修改失败");
@@ -75,9 +82,16 @@ function ChgUserHead() {
 }
 
 function ChgUserName() {
+    var oldusername=$.cookie("username");
     var form_data = new FormData();
-    var name = $("#newname").val();
-    form_data.append("name", name);
+    var newname = $("#newname").val();
+    if(!newname)
+    {
+        alert("请输入新用户名");
+        return;
+    }
+    form_data.append("newname", newname);
+    form_data.append("oldname", oldusername);
     $.ajax({
         type: "POST",
         url: "/chg_username/",
@@ -86,6 +100,8 @@ function ChgUserName() {
         contentType: false,
         success: function (returndata) {
             alert(returndata);
+            $.cookie("username",newname);
+            open("../homepage/", "_self");
         },
         error: function (returndata) {
             alert("修改失败");
@@ -94,9 +110,11 @@ function ChgUserName() {
 }
 
 function ChgUserSlogan() {
+    var username=$.cookie("username");
     var form_data = new FormData();
     var slogan = $("#newslogan").val();
     form_data.append("slogan", slogan);
+    form_data.append("username", username);
     $.ajax({
         type: "POST",
         url: "/chg_userslogan/",
@@ -105,6 +123,7 @@ function ChgUserSlogan() {
         contentType: false,
         success: function (returndata) {
             alert(returndata);
+            open("../homepage/", "_self");
         },
         error: function (returndata) {
             alert("修改失败");
@@ -113,10 +132,13 @@ function ChgUserSlogan() {
 }
 
 function Init_book_popwindows() {
+    var userid=$.cookie("userid");
+    var form_data = new FormData();
+    form_data.append("userid", userid);
     $.ajax({
         type: "POST",
         url: "/init_popwind_book_home/",
-        data: 1,
+        data: form_data,
         processData: false,
         contentType: false,
         success: function (returndata) {
@@ -159,7 +181,9 @@ function Init_book_popwindows() {
 }
 
 function del_book(book) {
+    var userid=$.cookie("userid");
     var form_data = new FormData();
+    form_data.append("userid", userid);
     form_data.append("book", book);
     $.ajax({
         type: "POST",
@@ -178,8 +202,10 @@ function del_book(book) {
 }
 
 function add_book(book) {
+    var userid=$.cookie("userid");
     var form_data = new FormData();
     form_data.append("book", book);
+    form_data.append("userid", userid);
     $.ajax({
         type: "POST",
         url: "/add_book_user/",
@@ -197,10 +223,13 @@ function add_book(book) {
 }
 
 function Init_note_popwindows() {
+    var userid=$.cookie("userid");
+    var form_data = new FormData();
+    form_data.append("userid", userid);
     $.ajax({
         type: "POST",
         url: "/init_popwind_note_home/",
-        data: 1,
+        data: form_data,
         processData: false,
         contentType: false,
         success: function (returndata) {
@@ -251,12 +280,17 @@ function del_note(note) {
 
 function add_note() {
     var newnotename = $("#newnote").val();
-    if (!newnotename) {
+    var userid=$.cookie("userid");
+    if (!newnotename)
+    {
         alert("请输入单词本名称");
         return;
-    } else {
+    }
+    else
+    {
         var form_data = new FormData();
         form_data.append("note", newnotename);
+        form_data.append("userid", userid);
         $.ajax({
             type: "POST",
             url: "/add_note_user/",

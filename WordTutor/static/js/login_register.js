@@ -27,7 +27,11 @@ function submit_login()
                 }
                 else
                 {
-                    //alert("登录成功");
+                    //alert("username"+username);
+                    $.cookie("username",username);
+                    $.cookie("password",password);
+                    var userid=return_rslt['userid'];
+                    $.cookie("userid",userid);
                     open_homepage();
                 }
             },
