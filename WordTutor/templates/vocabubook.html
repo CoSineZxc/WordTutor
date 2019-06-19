@@ -4,33 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>vocabulary book</title>
-    <link rel="stylesheet" href="../static/plugin/bootstrap.css"/>
-    <link rel="stylesheet" href="../static/css/main.css"/>
-    <script src="../static/plugin/bootstrap.min.js"></script>
-    <script src="../static/plugin/jquery-3.4.0.min.js"></script>
-    <script src="../static/js/homepage.js"></script>
-    <script src="../static/js/Vbooknote.js"></script>
+    <link rel="stylesheet" href="/static/plugin/bootstrap.css"/>
+    <link rel="stylesheet" href="/static/css/main.css"/>
+    <script src="/static/plugin/bootstrap.min.js"></script>
+    <script src="/static/plugin/jquery-3.4.0.min.js"></script>
+    <script src="/static/plugin/jquery.cookie.js"></script>
+    <script src="/static/js/homepage.js"></script>
+    <script src="/static/js/Vbooknote.js"></script>
 </head>
-<body onload="initial_vbook()">
+<body onload="initial_vbooknavbar()">
 <div class="container">
     <!--导航栏-->
     <div class="navbar navbar-default">
         <div class="col-md-2">
             <div class="navbar-header">
-                <a href="#" class="navbar-brand"><img src="../static/images/logo_tran.jpg"/></a>
+                <a href="#" class="navbar-brand"><img src="/static/images/logo_tran.jpg"/></a>
             </div>
         </div>
         <div class="col-md-6">
             <ul class="nav navbar-nav navbar-left">
-                <li class="active"><a href="#">单词书</a></li>
-                <li><a href="#">单词本</a></li>
+                <li class="active"><a onclick="openvbook()">单词书</a></li>
+                <li><a onclick="openvnote()">单词本</a></li>
             </ul>
         </div>
         <div class="col-md-4">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="login">退出登录</a></li>
-                <li><a href="#">用户名</a></li>
-                <li><a href="#"><img src="../static/images/user_default.jpg" class="img-circle img-userlogo"/></a></li>
+                <li><a href="/login">退出登录</a></li>
+                <li><a href="/homepage/"><p id="txt_username">用户名</p></a></li>
+                <li><a href="/homepage/"><img src="/static/images/user_default.jpg" class="img-circle img-userlogo" id="img_icon" /></a></li>
             </ul>
         </div>
     </div>

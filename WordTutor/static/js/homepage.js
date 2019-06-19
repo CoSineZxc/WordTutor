@@ -17,6 +17,7 @@ function initial_interface() {
                 var bookdata = return_data['book'];
                 var slogan = return_data['slogan'];
                 var img_dir = return_data['Headdir'];
+                $.cookie("img_dir",img_dir,{ expires: 7, path:'/', secure: false });
                 // alert("username: "+username);
                 $("#txt_username").text(username);
                 $("#txt_username_detail").text(username);
@@ -26,14 +27,14 @@ function initial_interface() {
                 // console.log(img_dir);
                 for (var i = 0; i < bookdata.length; i++) {
                     var $trTemp = $("<tr></tr>");
-                    $trTemp.append("<td><a href='../vocabubook/'>" + bookdata[i].bookname + "</a></td>");
+                    $trTemp.append("<td><a onclick='openvbook(\""+bookdata[i].bookname+"\")'>" + bookdata[i].bookname + "</a></td>");
                     $trTemp.append("<td>" + bookdata[i].wordnum + "</td>");
                     $trTemp.append('<td><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ' + bookdata[i].ratio + '%;"></div> </div></td>');
                     $trTemp.appendTo("#tbdata_book");
                 }
                 for (i = 0; i < notedata.length; i++) {
                     $trTemp = $("<tr></tr>");
-                    $trTemp.append("<td><a href='../vocabunote/'>" + notedata[i].notename + "</a></td>");
+                    $trTemp.append("<td><a onclick='openvnote(\""+notedata[i].notename+"\")'>" + notedata[i].notename + "</a></td>");
                     $trTemp.append("<td>" + notedata[i].wordnum + "</td>");
                     $trTemp.append('<td><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ' + notedata[i].ratio + '%;"></div> </div></td>');
                     $trTemp.appendTo("#tbdata_note");
@@ -41,12 +42,12 @@ function initial_interface() {
 
             } else {
                 alert("未登录");
-                open("../login/", "_self");
+                open("/login/", "_self");
             }
         },
         error: function (returndata) {
             alert("未登录");
-            open("../login/", "_self");
+            open("/login/", "_self");
         }
     });
 }
@@ -73,7 +74,7 @@ function ChgUserHead() {
         contentType: false,
         success: function (returndata) {
             alert(returndata);
-            open("../homepage/", "_self");
+            open("/homepage/", "_self");
         },
         error: function (returndata) {
             alert("修改失败");
@@ -101,7 +102,7 @@ function ChgUserName() {
         success: function (returndata) {
             alert(returndata);
             $.cookie("username",newname);
-            open("../homepage/", "_self");
+            open("/homepage/", "_self");
         },
         error: function (returndata) {
             alert("修改失败");
@@ -123,7 +124,7 @@ function ChgUserSlogan() {
         contentType: false,
         success: function (returndata) {
             alert(returndata);
-            open("../homepage/", "_self");
+            open("/homepage/", "_self");
         },
         error: function (returndata) {
             alert("修改失败");
@@ -170,12 +171,12 @@ function Init_book_popwindows() {
                 }
             } else {
                 alert("未登录");
-                open("../login/", "_self");
+                open("/login/", "_self");
             }
         },
         error: function (returndata) {
             alert("未登录");
-            open("../login/", "_self");
+            open("/login/", "_self");
         }
     });
 }
@@ -198,7 +199,7 @@ function del_book(book) {
             alert("删除失败");
         }
     });
-    open("../homepage/", "_self");
+    open("/homepage/", "_self");
 }
 
 function add_book(book) {
@@ -219,7 +220,7 @@ function add_book(book) {
             alert("添加失败");
         }
     });
-    open("../homepage/", "_self");
+    open("/homepage/", "_self");
 }
 
 function Init_note_popwindows() {
@@ -249,12 +250,12 @@ function Init_note_popwindows() {
                 }
             } else {
                 alert("未登录");
-                open("../login/", "_self");
+                open("/login/", "_self");
             }
         },
         error: function (returndata) {
             alert("未登录");
-            open("../login/", "_self");
+            open("/login/", "_self");
         }
     });
 }
@@ -275,7 +276,7 @@ function del_note(note) {
             alert("删除失败");
         }
     });
-    open("../homepage/", "_self");
+    open("/homepage/", "_self");
 }
 
 function add_note() {
@@ -306,4 +307,30 @@ function add_note() {
         });
     }
     open("../homepage/", "_self");
+}
+
+function openvbook(bookname=null)
+{
+    var userid=$.cookie("userid");
+    if(bookname==null)
+    {
+        open("/vocabubook/"+userid.toString()+"/","_self");
+    }
+    else
+    {
+        open("/vocabubook/"+userid.toString()+"/"+bookname+"/","_self");
+    }
+}
+
+function openvnote(notename=null)
+{
+    var userid=$.cookie("userid");
+    if(notename==null)
+    {
+        open("/vocabunote/"+userid.toString()+"/","_self");
+    }
+    else
+    {
+        open("/vocabunote/"+userid.toString()+"/"+notename+"/","_self");
+    }
 }

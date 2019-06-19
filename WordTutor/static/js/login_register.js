@@ -46,7 +46,7 @@ function submit_login()
 
 function open_homepage()
 {
-    open("../homepage/","_self");
+    open("/homepage/","_self");
 }
 
 function submit_register()
@@ -111,5 +111,5 @@ function submit_register()
 
 function open_login()
 {
-    open("../login/","_self");
+    open("/login/","_self");
 }

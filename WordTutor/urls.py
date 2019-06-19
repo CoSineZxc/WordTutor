@@ -1,4 +1,6 @@
 from django.urls import re_path, path
+from django.conf import settings
+from django.conf.urls.static import static
 from WordTutor import views
 
 urlpatterns = [
@@ -6,8 +8,10 @@ urlpatterns = [
     re_path(r'^login/$', views.firstpage),
     re_path(r'^homepage/$', views.homepage),
     re_path(r'^sethomepage/$', views.sethomepage),
-    re_path(r'^vocabubook/$', views.vocabubook),
-    re_path(r'^vocabunote/$', views.vocabunote),
+    re_path(r'^vocabubook/(?P<userid>[0-9]*)/$', views.vocabubook),
+    re_path(r'^vocabubook/(?P<userid>[0-9]*)/(?P<book>.*)/$', views.vocabubook),
+    re_path(r'^vocabunote/(?P<userid>[0-9]*)/$', views.vocabunote),
+    re_path(r'^vocabunote/(?P<userid>[0-9]*)/(?P<book>.*)/$', views.vocabunote),
     re_path(r'^submit_login/$', views.login),
     re_path(r'^submit_register/$', views.register_submit),
     re_path(r'^chg_userhead/$', views.chgUserHead),
@@ -19,6 +23,5 @@ urlpatterns = [
     re_path(r'^init_popwind_note_home/$', views.pop_home_note),
     re_path(r'^del_note_user/$', views.del_note),
     re_path(r'^add_note_user/$', views.add_note),
-    re_path(r'^setvbook/$', views.setvbook),
     re_path(r'^.*$', views.firstpage),
 ]

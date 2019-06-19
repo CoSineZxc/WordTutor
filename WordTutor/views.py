@@ -77,9 +77,9 @@ def sethomepage(request):
         headImgDir = None  # "../static/images/user_default.jpg"
         if ifheadimg:
             headImgDir = searchFile("./WordTutor/static/images/usericon", "user_" + str(userid) + "\..*")
-            headImgDir = '.' + headImgDir
+            headImgDir = headImgDir[1:]
         if headImgDir == None:
-            headImgDir = "../static/images/user_default.jpg"
+            headImgDir = "/static/images/user_default.jpg"
         # 用户单词本信息
         notelist = []
         NoteInfo = noteinfo.objects.filter(userid=userid)
@@ -274,75 +274,13 @@ def add_note(request):
         return HttpResponse("添加成功")
 
 
-def vocabubook(request):
+def vocabubook(request,userid,book=None):
+
     return render(request, 'vocabubook.html')
 
 
-def vocabunote(request):
+def vocabunote(request,note=None):
+
     return render(request, 'vocabunote.html')
 
 
-def setvbook(request):
-    data = {}
-    print("id: " + str(userid))
-    username = "未登录"
-    if userid != -1:
-        # 菜单栏信息
-        UserInfo = userinfo.objects.filter(id=userid)
-        UserInfo = UserInfo.values()
-        UserInfo = UserInfo[0]
-        username = UserInfo["username"]
-        ifheadimg = UserInfo["ifheadimg"]
-        headImgDir = None  # "../static/images/user_default.jpg"
-        if ifheadimg:
-            headImgDir = searchFile("./WordTutor/static/images/usericon", "user_" + str(userid) + "\..*")
-            headImgDir = '.' + headImgDir
-        if headImgDir == None:
-            headImgDir = "../static/images/user_default.jpg"
-        data["result"] = 1
-        data["username"] = username
-        data["Headdir"] = headImgDir
-        # 用户单词书信息
-        booklist = []
-        BookUserInfo = userbook.objects.filter(userid_id=userid)
-        BookUserInfo = BookUserInfo.values()
-        # print(BookUserInfo)
-        listnum = 0
-        for i, info in enumerate(BookUserInfo):
-            bkid = info["bookid_id"]
-            global bookid
-            if i == 0 and bookid == -1:
-                bookid = bkid
-            # print("bookid:" + str(bkid))
-            BookInfo = bookinfo.objects.filter(id=bkid)
-            BookInfo = BookInfo.values()
-            # print(BookInfo)
-            BookInfo = BookInfo[0]
-            bkname = BookInfo["bookname"]
-            if bookid == bkid:
-                bk_wd_num = BookInfo["wordnum"]
-                listnum = bk_wd_num // 5
-                if bk_wd_num % 5 != 0:
-                    listnum += 1
-            booklist.append(bkname)
-        data["allbook"] = booklist
-        data["listnum"] = listnum
-        global wordid
-        if wordid == -1:
-            BookInfo = bookinfo.objects.filter(id=bookid)
-            BookInfo = BookInfo.values()
-            BookInfo = BookInfo[0]
-            word = BookInfo["word"][0].spell
-            WordInfo = wordinfo.objects.filter(spell=word)
-            WordInfo = WordInfo.values()
-            WordInfo = WordInfo[0]
-            wordid = WordInfo["id"]
-            data["word"] = word
-        else:
-            BookInfo = bookinfo.objects.filter(id=bookid)
-            BookInfo = BookInfo.values()
-            BookInfo = BookInfo[0]
-            word = BookInfo["word"][0].spell
-            find = True
-            while find:
-                find = False;
