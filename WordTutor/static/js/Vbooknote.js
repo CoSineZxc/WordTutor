@@ -1,4 +1,4 @@
-function initial_vbooknavbar(book)
+function initial_vnavbar(book)
 {
     var username=$.cookie("username");
     var img_dir=$.cookie("img_dir");

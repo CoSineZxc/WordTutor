@@ -1,6 +1,8 @@
 import hashlib
 from PIL import Image
 import os, os.path, re
+import random
+
 
 
 def md5_psd(password):
@@ -33,7 +35,17 @@ def GetImgType(imgname):
     imgname=imgname[-1]
     return imgname
 
-if __name__=="__main__":
-    a = searchFile("./static/images/usericon", "user_"+str(1)+"\..*")
+def CreateRand(allnum,locnow):
+    rslt=[]
+    while len(rslt)<2:
+        a=random.randint(0, allnum-1)
+        if a not in rslt and a!=locnow:
+            rslt.append(a)
+    return rslt
 
-    ChgImgSize(a)
+if __name__=="__main__":
+    # a = searchFile("./static/images/usericon", "user_"+str(1)+"\..*")
+
+    # ChgImgSize(a)
+    a=CreateRand(20,2)
+    print(a)

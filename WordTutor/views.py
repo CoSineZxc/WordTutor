@@ -1,5 +1,6 @@
 from django.shortcuts import render, HttpResponse
 import json
+import random
 from WordTutor.models import *  # 导入数据库操作模块
 from WordTutor.tools import *
 
@@ -275,11 +276,70 @@ def add_note(request):
 
 
 def vocabubook(request,userid,book=None):
+    '''
+    + 当前选择的单词本（含缺省）V
+    + 完成度(?) V
+    + 当前单词及相关信息 V
+    + 用户全部单词书 V
+    + 本书全部单词 V
+    :param request:
+    :param userid:
+    :param book:
+    :return:
+    '''
+    booklist=[]
+    bookNowName=book
+    bookNowId=-1
+    bookNowFinish=0
+    word_list=[]
+    wordNowSpell=None
+    wordNowMean=None
+    SelectMeanList=[]
+    UserBook=userbook.objects.filter(userid_id=userid)
+    UserBook=UserBook.values()
+    for i,info in enumerate(UserBook):
+        bkid=info["bookid_id"]
+        BookInfo=bookinfo.objects.filter(id=bkid)
+        BookInfo=BookInfo.values()
+        BookInfo=BookInfo[0]
+        bkname=BookInfo["bookname"]
+        booklist.append(bkname)
+        if i==0 and book==None:
+            bookNowName=bkname
+        if bkname==bookNowName:
+            bookNowId=BookInfo["id"]
+            bookNowFinish=info["finishnum"]/BookInfo["wordnum"]*100
+    book_obj = bookinfo.objects.get(bookname=bookNowName)
+    word_obj = book_obj.word.all().values("spell")
+    wrongnumlist=CreateRand(len(word_obj),0)
+    wrongmeanlist=[]
+    for i,wd in enumerate(word_obj):
+        if i in wrongnumlist:
+            wrongmean = wordinfo.objects.filter(spell=wd["spell"]).values()[0]["mean"]
+            wrongmeanlist.append(wrongmean)
+        word_list.append(wd["spell"])
+    wordNowSpell=word_list[0]
+    WordInfo=wordinfo.objects.filter(spell=wordNowSpell)
+    WordInfo=WordInfo.values()
+    WordInfo=WordInfo[0]
+    wordNowMean=WordInfo["mean"]
+    rightloc=random.randint(0,2)
+    if rightloc==0:
+        SelectMeanList.append(wordNowMean)
+        SelectMeanList.append(wrongmeanlist[0])
+        SelectMeanList.append(wrongmeanlist[1])
+    elif rightloc==1:
+        SelectMeanList.append(wrongmeanlist[0])
+        SelectMeanList.append(wordNowMean)
+        SelectMeanList.append(wrongmeanlist[1])
+    else:
+        SelectMeanList.append(wrongmeanlist[0])
+        SelectMeanList.append(wrongmeanlist[1])
+        SelectMeanList.append(wordNowMean)
+    return render(request, 'vocabubook.html',locals())
 
-    return render(request, 'vocabubook.html')
 
-
-def vocabunote(request,note=None):
+def vocabunote(request,userid,note=None):
 
     return render(request, 'vocabunote.html')
 

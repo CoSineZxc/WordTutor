@@ -11,7 +11,7 @@ urlpatterns = [
     re_path(r'^vocabubook/(?P<userid>[0-9]*)/$', views.vocabubook),
     re_path(r'^vocabubook/(?P<userid>[0-9]*)/(?P<book>.*)/$', views.vocabubook),
     re_path(r'^vocabunote/(?P<userid>[0-9]*)/$', views.vocabunote),
-    re_path(r'^vocabunote/(?P<userid>[0-9]*)/(?P<book>.*)/$', views.vocabunote),
+    re_path(r'^vocabunote/(?P<userid>[0-9]*)/(?P<note>.*)/$', views.vocabunote),
     re_path(r'^submit_login/$', views.login),
     re_path(r'^submit_register/$', views.register_submit),
     re_path(r'^chg_userhead/$', views.chgUserHead),
