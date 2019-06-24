@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/WordTutor/views.py" line="106" mnemonic="9" />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="f02833a1-051d-420d-a874-82aa913c0f45" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WordTutor/static/js/Vbooknote.js" beforeDir="false" afterPath="$PROJECT_DIR$/WordTutor/static/js/Vbooknote.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WordTutor/static/js/homepage.js" beforeDir="false" afterPath="$PROJECT_DIR$/WordTutor/static/js/homepage.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WordTutor/static/js/login_register.js" beforeDir="false" afterPath="$PROJECT_DIR$/WordTutor/static/js/login_register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/WordTutor/templates/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/WordTutor/templates/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WordTutor/templates/vocabubook.html" beforeDir="false" afterPath="$PROJECT_DIR$/WordTutor/templates/vocabubook.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WordTutor/templates/vocabunote.html" beforeDir="false" afterPath="$PROJECT_DIR$/WordTutor/templates/vocabunote.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/WordTutor/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/WordTutor/tools.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WordTutor/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/WordTutor/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/WordTutor/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/WordTutor/views.py" afterDir="false" />
     </list>
@@ -61,135 +61,79 @@
     <favorites_list name="WebProj" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6104387">
-      <split-first>
-        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/WordTutor/templates/vocabubook.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-3692">
-                  <caret line="47" column="40" lean-forward="true" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
-                  <folding>
-                    <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                    <element signature="e#6398#7411#0#HTML" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WordTutor/models.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-200">
-                  <caret line="16" column="8" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="8" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WordTutor/static/js/Vbooknote.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="30" lean-forward="true" selection-start-column="30" selection-end-column="30" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WordTutor/urls.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="236">
-                  <caret line="18" column="55" lean-forward="true" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
-                  <folding>
-                    <element signature="e#0#37#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WordTutor/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-923">
-                  <caret line="178" lean-forward="true" selection-start-line="178" selection-end-line="178" />
-                  <folding>
-                    <element signature="e#0#49#0" expanded="true" />
-                    <element signature="e#193#229#0" />
-                    <element signature="e#256#1088#0" />
-                    <element signature="e#1118#1157#0" />
-                    <element signature="e#1194#1786#0" />
-                    <element signature="e#1816#1855#0" />
-                    <element signature="e#1888#4211#0" />
-                    <element signature="e#4244#5228#0" />
-                    <element signature="e#5261#5573#0" />
-                    <element signature="e#5608#5901#0" />
-                    <element signature="e#5936#7002#0" />
-                    <element signature="e#7032#7370#0" />
-                    <element signature="e#7400#7805#0" />
-                    <element signature="e#8295#8424#0" />
-                    <element signature="e#8454#8972#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WordTutor/templates/vocabunote.html">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="535">
-                  <caret line="197" column="27" lean-forward="true" selection-start-line="197" selection-start-column="27" selection-end-line="197" selection-end-column="27" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-first>
-      <split-second>
-        <leaf>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/WordTutor/views.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="191">
-                  <caret line="294" column="16" selection-start-line="294" selection-start-column="4" selection-end-line="294" selection-end-column="16" />
-                  <folding>
-                    <element signature="e#0#49#0" expanded="true" />
-                    <element signature="e#193#229#0" />
-                    <element signature="e#256#1088#0" />
-                    <element signature="e#1118#1157#0" />
-                    <element signature="e#1194#1786#0" />
-                    <element signature="e#1816#1855#0" />
-                    <element signature="e#1888#4211#0" />
-                    <element signature="e#4244#5228#0" />
-                    <element signature="e#5261#5573#0" />
-                    <element signature="e#5608#5901#0" />
-                    <element signature="e#5936#7002#0" />
-                    <element signature="e#7032#7370#0" />
-                    <element signature="e#7400#7805#0" />
-                    <element signature="e#7840#8265#0" />
-                    <element signature="e#8295#8424#0" />
-                    <element signature="e#8454#8972#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/WordTutor/tools.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="69">
-                  <caret line="3" column="13" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="13" />
-                  <folding>
-                    <element signature="e#0#14#0" expanded="true" />
-                    <element signature="e#1182#1249#0" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-        </leaf>
-      </split-second>
-    </splitter>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WordTutor/templates/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="621">
+              <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WordTutor/static/js/login_register.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2093">
+              <caret line="91" selection-start-line="43" selection-end-line="91" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/WordTutor/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="205">
+              <caret line="343" selection-start-line="343" selection-end-line="343" />
+              <folding>
+                <element signature="e#0#49#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WordTutor/templates/homepage.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2277">
+              <caret line="99" column="31" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WordTutor/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="598">
+              <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="30" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/WordTutor/static/js/homepage.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1495">
+              <caret line="223" column="1" selection-start-line="183" selection-end-line="223" selection-end-column="1" />
+              <folding>
+                <element signature="n#!!block;n#ChgUserHead#0" />
+                <element signature="n#!!block;n#ChgUserName#0" />
+                <element signature="n#!!block;n#ChgUserSlogan#0" />
+                <element signature="n#!!block;n#Init_book_popwindows#0" />
+                <element signature="n#!!block;n#del_book#0" />
+                <element signature="n#!!block;n#add_book#0" />
+                <element signature="n#!!block;n#del_note#0" />
+                <element signature="n#!!block;n#openvbook#0" />
+                <element signature="n#!!block;n#openvnote#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -204,6 +148,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>../fonts/</find>
+      <find>print</find>
+      <find>id</find>
     </findStrings>
     <replaceStrings>
       <replace>./fonts/</replace>
@@ -227,21 +173,21 @@
         <option value="$PROJECT_DIR$/WebProj/settings.py" />
         <option value="$PROJECT_DIR$/WebProj/urls.py" />
         <option value="$PROJECT_DIR$/WordTutor/templates/register.html" />
-        <option value="$PROJECT_DIR$/WordTutor/templates/homepage.html" />
-        <option value="$PROJECT_DIR$/WordTutor/templates/login.html" />
-        <option value="$PROJECT_DIR$/WordTutor/static/js/login_register.js" />
-        <option value="$PROJECT_DIR$/WordTutor/static/js/homepage.js" />
-        <option value="$PROJECT_DIR$/WordTutor/urls.py" />
+        <option value="$PROJECT_DIR$/WordTutor/tools.py" />
+        <option value="$PROJECT_DIR$/WordTutor/templates/vocabubook.html" />
+        <option value="$PROJECT_DIR$/WordTutor/views.py" />
         <option value="$PROJECT_DIR$/WordTutor/static/js/Vbooknote.js" />
         <option value="$PROJECT_DIR$/WordTutor/templates/vocabunote.html" />
-        <option value="$PROJECT_DIR$/WordTutor/tools.py" />
-        <option value="$PROJECT_DIR$/WordTutor/views.py" />
-        <option value="$PROJECT_DIR$/WordTutor/templates/vocabubook.html" />
+        <option value="$PROJECT_DIR$/WordTutor/urls.py" />
+        <option value="$PROJECT_DIR$/WordTutor/templates/login.html" />
+        <option value="$PROJECT_DIR$/WordTutor/templates/homepage.html" />
+        <option value="$PROJECT_DIR$/WordTutor/static/js/login_register.js" />
+        <option value="$PROJECT_DIR$/WordTutor/static/js/homepage.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="676" />
+    <option name="x" value="-7" />
     <option name="width" value="697" />
     <option name="height" value="735" />
   </component>
@@ -253,6 +199,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -293,7 +240,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -304,6 +250,7 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="restartRequiresConfirmation" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -333,7 +280,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.tools">
+  <component name="RunManager" selected="Django server.WebProj">
     <configuration name="(?P&lt;username&gt;.*) (1)" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:8000/homepage/(?P&lt;username&gt;.*)/">
       <method v="2" />
     </configuration>
@@ -446,12 +393,14 @@
       <workItem from="1560291076156" duration="24465000" />
       <workItem from="1560511246064" duration="603000" />
       <workItem from="1560557523652" duration="45216000" />
-      <workItem from="1560757267211" duration="104065000" />
+      <workItem from="1560757267211" duration="104126000" />
+      <workItem from="1561028910738" duration="51159000" />
+      <workItem from="1561267474477" duration="874000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="266368000" />
+    <option name="totallyTimeSpent" value="318462000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -466,14 +415,14 @@
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.21633889" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24281392" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="manage.py@WebProj" order="0" weight="0.60983604" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
-      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.19344263" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.359401" />
+      <window_info anchor="bottom" id="Run" order="3" weight="0.16229509" />
+      <window_info anchor="bottom" id="Debug" order="4" weight="0.17377049" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.3294509" />
@@ -489,30 +438,6 @@
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" weight="0.022692889" />
     </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21633889" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="manage.py@WebProj" order="0" weight="0.60983604" />
-      <window_info anchor="bottom" id="Message" order="1" />
-      <window_info anchor="bottom" id="Find" order="2" />
-      <window_info anchor="bottom" id="Run" order="3" visible="true" weight="0.26065573" />
-      <window_info anchor="bottom" id="Debug" order="4" weight="0.359401" />
-      <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="7" weight="0.3294509" />
-      <window_info anchor="bottom" id="Docker" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3294509" />
-      <window_info anchor="bottom" id="Database Changes" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.37603992" />
-      <window_info anchor="bottom" id="Python Console" order="13" weight="0.3294509" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" weight="0.022692889" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -600,9 +525,7 @@
     <entry file="file://$PROJECT_DIR$/WordTutor/static/images/user_logo.png">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/static/images/usericon/user_2_1.jpeg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/static/images/usericon/user_2_1.jpeg" />
     <entry file="file://$PROJECT_DIR$/WordTutor/static/images/usericon/user_default.jpg">
       <provider selected="true" editor-type-id="images" />
     </entry>
@@ -672,31 +595,9 @@
     <entry file="file://$PROJECT_DIR$/WordTutor/static/images/usericon/user_2.jpeg">
       <provider selected="true" editor-type-id="images" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/tests.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="188">
-          <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/static/images/usericon/user_1.jpg">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/static/images/usericon/user_1.jpg" />
     <entry file="file://$PROJECT_DIR$/WordTutor/static/images/usericon/user_1.jpeg">
       <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/admin.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#32#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://D:/AppData/Python/Python36/Lib/site-packages/django/db/models/manager.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -732,92 +633,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/static/js/login_register.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2599">
-          <caret line="113" column="10" selection-start-line="113" selection-start-column="10" selection-end-line="113" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/static/js/homepage.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1020">
-          <caret line="21" column="50" lean-forward="true" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#td#0;n#!!top" expanded="true" />
-            <element signature="n#!!block;n#ChgUserHead#0" />
-            <element signature="n#!!block;n#ChgUserName#0" />
-            <element signature="n#!!block;n#ChgUserSlogan#0" />
-            <element signature="n#!!block;n#Init_book_popwindows#0" />
-            <element signature="e#74#81#1" expanded="true" />
-            <element signature="n#!!block;n#del_book#0" />
-            <element signature="n#!!block;n#add_book#0" />
-            <element signature="n#!!block;n#Init_note_popwindows#0" />
-            <element signature="e#74#81#1" expanded="true" />
-            <element signature="n#!!block;n#del_note#0" />
-            <element signature="n#!!block;n#add_note#0" />
-            <element signature="n#!!block;n#openvbook#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/templates/homepage.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="966">
-          <caret line="42" column="30" selection-start-line="42" selection-start-column="30" selection-end-line="42" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/templates/login.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="621">
-          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/templates/register.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="24" column="22" lean-forward="true" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/static/js/Vbooknote.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="30" lean-forward="true" selection-start-column="30" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/urls.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="18" column="55" lean-forward="true" selection-start-line="18" selection-start-column="55" selection-end-line="18" selection-end-column="55" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/templates/vocabunote.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="535">
-          <caret line="197" column="27" lean-forward="true" selection-start-line="197" selection-start-column="27" selection-end-line="197" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/models.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-200">
-          <caret line="16" column="8" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/WordTutor/tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="69">
-          <caret line="3" column="13" selection-start-line="3" selection-start-column="7" selection-end-line="3" selection-end-column="13" />
+        <state relative-caret-position="152">
+          <caret line="37" column="14" selection-start-line="37" selection-start-column="4" selection-end-line="37" selection-end-column="14" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
             <element signature="e#1182#1249#0" />
@@ -825,38 +644,132 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/WordTutor/views.py">
+    <entry file="file://$PROJECT_DIR$/WordTutor/tests.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-923">
-          <caret line="178" lean-forward="true" selection-start-line="178" selection-end-line="178" />
+        <state relative-caret-position="451">
+          <caret line="48" column="22" lean-forward="true" selection-start-line="48" selection-start-column="22" selection-end-line="48" selection-end-column="22" />
           <folding>
-            <element signature="e#0#49#0" expanded="true" />
-            <element signature="e#193#229#0" />
-            <element signature="e#256#1088#0" />
-            <element signature="e#1118#1157#0" />
-            <element signature="e#1194#1786#0" />
-            <element signature="e#1816#1855#0" />
-            <element signature="e#1888#4211#0" />
-            <element signature="e#4244#5228#0" />
-            <element signature="e#5261#5573#0" />
-            <element signature="e#5608#5901#0" />
-            <element signature="e#5936#7002#0" />
-            <element signature="e#7032#7370#0" />
-            <element signature="e#7400#7805#0" />
-            <element signature="e#8295#8424#0" />
-            <element signature="e#8454#8972#0" />
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/admin.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
+          <folding>
+            <element signature="e#0#32#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/models.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-248">
+          <caret line="16" column="8" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/static/js/Vbooknote.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="223" column="29" selection-start-line="223" selection-start-column="22" selection-end-line="223" selection-end-column="29" />
+          <folding>
+            <element signature="n#!!block;n#initial_vnavbar#0" />
+            <element signature="n#!!block;n#hidden_answer#0" />
+            <element signature="n#!!block;n#check_spell#0" />
+            <element signature="n#!!block;n#check_mean#0" />
+            <element signature="n#!!block;n#Init_Add2Note_popwindows#0" />
+            <element signature="n#!!block;n#Add2Note#0" />
+            <element signature="n#!!block;n#move2last#0" />
+            <element signature="n#!!block;n#jmp2word#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/WordTutor/templates/vocabubook.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3692">
-          <caret line="47" column="40" lean-forward="true" selection-start-line="47" selection-start-column="40" selection-end-line="47" selection-end-column="40" />
+        <state relative-caret-position="120">
+          <caret line="149" column="132" selection-start-line="149" selection-start-column="46" selection-end-line="149" selection-end-column="132" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="e#6398#7411#0#HTML" />
+            <element signature="n#div#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/templates/vocabunote.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="42" column="57" selection-start-line="42" selection-start-column="49" selection-end-line="42" selection-end-column="57" />
+          <folding>
+            <element signature="n#div#0;n#div#2;n#div#0;n#div#1;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/templates/register.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="322">
+          <caret line="24" column="22" lean-forward="true" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/templates/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="27" column="31" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/static/js/login_register.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2093">
+          <caret line="91" selection-start-line="43" selection-end-line="91" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/templates/homepage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2277">
+          <caret line="99" column="31" selection-start-line="99" selection-start-column="31" selection-end-line="99" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="29" column="1" selection-start-line="29" selection-start-column="1" selection-end-line="30" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/static/js/homepage.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1495">
+          <caret line="223" column="1" selection-start-line="183" selection-end-line="223" selection-end-column="1" />
+          <folding>
+            <element signature="n#!!block;n#ChgUserHead#0" />
+            <element signature="n#!!block;n#ChgUserName#0" />
+            <element signature="n#!!block;n#ChgUserSlogan#0" />
+            <element signature="n#!!block;n#Init_book_popwindows#0" />
+            <element signature="n#!!block;n#del_book#0" />
+            <element signature="n#!!block;n#add_book#0" />
+            <element signature="n#!!block;n#del_note#0" />
+            <element signature="n#!!block;n#openvbook#0" />
+            <element signature="n#!!block;n#openvnote#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/WordTutor/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="205">
+          <caret line="343" selection-start-line="343" selection-end-line="343" />
+          <folding>
+            <element signature="e#0#49#0" expanded="true" />
           </folding>
         </state>
       </provider>

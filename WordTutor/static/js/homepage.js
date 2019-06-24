@@ -1,8 +1,9 @@
 function initial_interface() {
-    var userid=$.cookie("userid");
+    $.cookie("userid", 1,{ path:'/'});
+    var userid = 1;
     //alert(username);
     var form_data = new FormData();
-    form_data.append("userid",userid);
+    form_data.append("userid", userid);
     $.ajax({
         type: "POST",
         url: "/sethomepage/",
@@ -17,7 +18,7 @@ function initial_interface() {
                 var bookdata = return_data['book'];
                 var slogan = return_data['slogan'];
                 var img_dir = return_data['Headdir'];
-                $.cookie("img_dir",img_dir,{ expires: 7, path:'/', secure: false });
+                $.cookie("img_dir", img_dir, {expires: 7, path: '/', secure: false});
                 // alert("username: "+username);
                 $("#txt_username").text(username);
                 $("#txt_username_detail").text(username);
@@ -27,14 +28,14 @@ function initial_interface() {
                 // console.log(img_dir);
                 for (var i = 0; i < bookdata.length; i++) {
                     var $trTemp = $("<tr></tr>");
-                    $trTemp.append("<td><a onclick='openvbook(\""+bookdata[i].bookname+"\")'>" + bookdata[i].bookname + "</a></td>");
+                    $trTemp.append("<td><a onclick='openvbook(\"" + bookdata[i].bookname + "\")'>" + bookdata[i].bookname + "</a></td>");
                     $trTemp.append("<td>" + bookdata[i].wordnum + "</td>");
                     $trTemp.append('<td><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ' + bookdata[i].ratio + '%;"></div> </div></td>');
                     $trTemp.appendTo("#tbdata_book");
                 }
                 for (i = 0; i < notedata.length; i++) {
                     $trTemp = $("<tr></tr>");
-                    $trTemp.append("<td><a onclick='openvnote(\""+notedata[i].notename+"\")'>" + notedata[i].notename + "</a></td>");
+                    $trTemp.append("<td><a onclick='openvnote(\"" + notedata[i].notename + "\")'>" + notedata[i].notename + "</a></td>");
                     $trTemp.append("<td>" + notedata[i].wordnum + "</td>");
                     $trTemp.append('<td><div class="progress"><div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: ' + notedata[i].ratio + '%;"></div> </div></td>');
                     $trTemp.appendTo("#tbdata_note");
@@ -53,7 +54,7 @@ function initial_interface() {
 }
 
 function ChgUserHead() {
-    var userid=$.cookie("userid");
+    var userid = $.cookie("userid");
     var form_data = new FormData();
     var file_info = $("#newimg")[0].files[0];
     var ftype = $("#newimg").val();
@@ -83,11 +84,10 @@ function ChgUserHead() {
 }
 
 function ChgUserName() {
-    var oldusername=$.cookie("username");
+    var oldusername = $.cookie("username");
     var form_data = new FormData();
     var newname = $("#newname").val();
-    if(!newname)
-    {
+    if (!newname) {
         alert("请输入新用户名");
         return;
     }
@@ -101,7 +101,7 @@ function ChgUserName() {
         contentType: false,
         success: function (returndata) {
             alert(returndata);
-            $.cookie("username",newname);
+            $.cookie("username", newname);
             open("/homepage/", "_self");
         },
         error: function (returndata) {
@@ -111,7 +111,7 @@ function ChgUserName() {
 }
 
 function ChgUserSlogan() {
-    var username=$.cookie("username");
+    var username = $.cookie("username");
     var form_data = new FormData();
     var slogan = $("#newslogan").val();
     form_data.append("slogan", slogan);
@@ -133,7 +133,7 @@ function ChgUserSlogan() {
 }
 
 function Init_book_popwindows() {
-    var userid=$.cookie("userid");
+    var userid = $.cookie("userid");
     var form_data = new FormData();
     form_data.append("userid", userid);
     $.ajax({
@@ -182,7 +182,7 @@ function Init_book_popwindows() {
 }
 
 function del_book(book) {
-    var userid=$.cookie("userid");
+    var userid = $.cookie("userid");
     var form_data = new FormData();
     form_data.append("userid", userid);
     form_data.append("book", book);
@@ -203,7 +203,7 @@ function del_book(book) {
 }
 
 function add_book(book) {
-    var userid=$.cookie("userid");
+    var userid = $.cookie("userid");
     var form_data = new FormData();
     form_data.append("book", book);
     form_data.append("userid", userid);
@@ -224,7 +224,7 @@ function add_book(book) {
 }
 
 function Init_note_popwindows() {
-    var userid=$.cookie("userid");
+    var userid = $.cookie("userid");
     var form_data = new FormData();
     form_data.append("userid", userid);
     $.ajax({
@@ -279,19 +279,18 @@ function del_note(note) {
     open("/homepage/", "_self");
 }
 
-function add_note() {
+function add_note(word = null) {
     var newnotename = $("#newnote").val();
-    var userid=$.cookie("userid");
-    if (!newnotename)
-    {
+    var userid = $.cookie("userid");
+    if (!newnotename) {
         alert("请输入单词本名称");
         return;
-    }
-    else
-    {
+    } else {
         var form_data = new FormData();
         form_data.append("note", newnotename);
         form_data.append("userid", userid);
+        if (word != null)
+            form_data.append("firstword", word);
         $.ajax({
             type: "POST",
             url: "/add_note_user/",
@@ -306,31 +305,31 @@ function add_note() {
             }
         });
     }
-    open("../homepage/", "_self");
+    if (word == null)
+        open("/homepage/", "_self");
 }
 
-function openvbook(bookname=null)
-{
-    var userid=$.cookie("userid");
-    if(bookname==null)
-    {
-        open("/vocabubook/"+userid.toString()+"/","_self");
-    }
-    else
-    {
-        open("/vocabubook/"+userid.toString()+"/"+bookname+"/","_self");
+function openvbook(bookname = null) {
+    var userid = $.cookie("userid");
+    if (bookname == null) {
+        open("/vocabubook/" + userid.toString() + "/", "_self");
+    } else {
+        open("/vocabubook/" + userid.toString() + "/" + bookname + "/", "_self");
     }
 }
 
-function openvnote(notename=null)
-{
-    var userid=$.cookie("userid");
-    if(notename==null)
-    {
-        open("/vocabunote/"+userid.toString()+"/","_self");
+function openvnote(notename = null) {
+    var userid = $.cookie("userid");
+    if (notename == null) {
+        open("/vocabunote/" + userid.toString() + "/", "_self");
+    } else {
+        open("/vocabunote/" + userid.toString() + "/" + notename + "/", "_self");
     }
-    else
-    {
-        open("/vocabunote/"+userid.toString()+"/"+notename+"/","_self");
-    }
+}
+
+function logout() {
+    $.cookie('username', null,{ path: '/'});
+    $.cookie('password', null,{ path: '/'});
+    $.cookie('userid', null,{ path: '/'});
+    open("/login/","_self");
 }

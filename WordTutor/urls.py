@@ -23,5 +23,8 @@ urlpatterns = [
     re_path(r'^init_popwind_note_home/$', views.pop_home_note),
     re_path(r'^del_note_user/$', views.del_note),
     re_path(r'^add_note_user/$', views.add_note),
+    re_path(r'^add_word2note/$', views.AddWord2Note),
+    re_path(r'^word_next/$', views.ChgNewWord),
+    re_path(r'^word_del/$', views.DelWordNote),
     re_path(r'^.*$', views.firstpage),
 ]

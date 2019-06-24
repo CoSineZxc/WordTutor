@@ -1,4 +1,5 @@
 from django.shortcuts import render, HttpResponse
+from django.db.models import Q
 import json
 import random
 from WordTutor.models import *  # 导入数据库操作模块
@@ -29,7 +30,7 @@ def login(request):
             userid = UserInfo["id"]
             rslt["userid"] = userid
             rslt["return"] = 1
-        print("return: " + str(rslt["return"]))
+        print("登录情况: " + str(rslt["return"]))
         rslt = json.dumps(rslt)
         return HttpResponse(rslt)
 
@@ -65,7 +66,6 @@ def homepage(request):
 
 def sethomepage(request):
     userid = request.POST.get('userid', None)
-    print(userid)
     data = {}
     if userid != None:
         # 用户名信息
@@ -74,7 +74,7 @@ def sethomepage(request):
         UserInfo = UserInfo[0]
         slogan = UserInfo["slogan"]
         ifheadimg = UserInfo["ifheadimg"]
-        username=UserInfo["username"]
+        username = UserInfo["username"]
         headImgDir = None  # "../static/images/user_default.jpg"
         if ifheadimg:
             headImgDir = searchFile("./WordTutor/static/images/usericon", "user_" + str(userid) + "\..*")
@@ -87,7 +87,6 @@ def sethomepage(request):
         NoteInfo = NoteInfo.values()
         noteelem = {}
         for info in NoteInfo:
-            print(info)
             noteelem["notename"] = info["notename"]
             noteelem["wordnum"] = info["wordnum"]
             if info["wordnum"] != 0:
@@ -101,13 +100,10 @@ def sethomepage(request):
         BookUserInfo = userbook.objects.filter(userid_id=userid)
         BookUserInfo = BookUserInfo.values()
         bookelem = {}
-        # print(BookUserInfo)
         for info in BookUserInfo:
             bkid = info["bookid_id"]
-            print("bookid:" + str(bkid))
             BookInfo = bookinfo.objects.filter(id=bkid)
             BookInfo = BookInfo.values()
-            print(BookInfo)
             BookInfo = BookInfo[0]
             bkname = BookInfo["bookname"]
             bk_wd_num = BookInfo["wordnum"]
@@ -145,19 +141,17 @@ def chgUserHead(request):
         oldname = ifimgexist[ifimgexist.find('user_'):]
         os.remove(img_root + '/' + oldname)
     destination = open(os.path.join(img_root, img_name), 'wb+')  # 打开特定的文件进行二进制的写操作
-    print(myFile, type(myFile))
     for chunk in myFile.chunks():  # 分块写入文件
         destination.write(chunk)
     destination.close()
     User.update(ifheadimg=True)
-    print(img_root + "." + img_name)
     ChgImgSize(img_root + "/" + img_name)
     return HttpResponse("头像修改成功")
 
 
 def chgUserName(request):
     newusername = request.POST.get('newname', None)
-    oldusername=request.POST.get('oldname', None)
+    oldusername = request.POST.get('oldname', None)
     User = userinfo.objects.filter(username=oldusername)
     if newusername != None:
         User.update(username=newusername)
@@ -190,7 +184,6 @@ def pop_home_book(request):
             bkid = info["bookid_id"]
             BookInfo = bookinfo.objects.filter(id=bkid)
             BookInfo = BookInfo.values()
-            print(BookInfo)
             BookInfo = BookInfo[0]
             bkname = BookInfo["bookname"]
             booklist_user.append(bkname)
@@ -200,8 +193,6 @@ def pop_home_book(request):
             bookname = info["bookname"]
             if bookname not in booklist_user:
                 booklist_no_user.append(bookname)
-        print(booklist_user)
-        print(booklist_no_user)
         data["belong"] = booklist_user
         data["unbelong"] = booklist_no_user
     else:
@@ -223,7 +214,7 @@ def del_book(request):
 
 def add_book(request):
     bookname = request.POST.get('book', None)
-    userid=request.POST.get('userid', None)
+    userid = request.POST.get('userid', None)
     BookInfo = bookinfo.objects.filter(bookname=bookname)
     BookInfo = BookInfo.values()
     BookInfo = BookInfo[0]
@@ -261,21 +252,33 @@ def del_note(request):
 def add_note(request):
     notename = request.POST.get('note', None)
     userid = request.POST.get('userid', None)
+    firstword = request.POST.get('firstword', None)
     NoteInfo = noteinfo.objects.filter(userid=userid, notename=notename)
     num = NoteInfo.count()
     if num != 0:
         return HttpResponse("单词本 " + notename + " 已存在")
     else:
-        newnote = {"userid_id": userid,
-                   "notename": notename,
-                   "wordnum": 0,
-                   "finishnum": 0
-                   }
-        noteinfo.objects.create(**newnote)
+        if firstword == None:
+            newnote = {"userid_id": userid,
+                       "notename": notename,
+                       "wordnum": 0,
+                       "finishnum": 0
+                       }
+            noteinfo.objects.create(**newnote)
+        else:
+            newnote = {"userid_id": userid,
+                       "notename": notename,
+                       "wordnum": 1,
+                       "finishnum": 0
+                       }
+            noteinfo.objects.create(**newnote)
+            Note=noteinfo.objects.filter(userid_id=userid,notename=notename).first()
+            word=wordinfo.objects.filter(spell=firstword)
+            Note.word.add(*word)
         return HttpResponse("添加成功")
 
 
-def vocabubook(request,userid,book=None):
+def vocabubook(request, userid, book=None):
     '''
     + 当前选择的单词本（含缺省）V
     + 完成度(?) V
@@ -287,48 +290,49 @@ def vocabubook(request,userid,book=None):
     :param book:
     :return:
     '''
-    booklist=[]
-    bookNowName=book
-    bookNowId=-1
-    bookNowFinish=0
-    word_list=[]
-    wordNowSpell=None
-    wordNowMean=None
-    SelectMeanList=[]
-    UserBook=userbook.objects.filter(userid_id=userid)
-    UserBook=UserBook.values()
-    for i,info in enumerate(UserBook):
-        bkid=info["bookid_id"]
-        BookInfo=bookinfo.objects.filter(id=bkid)
-        BookInfo=BookInfo.values()
-        BookInfo=BookInfo[0]
-        bkname=BookInfo["bookname"]
+    booklist = []
+    bookNowName = book
+    bookNowId = -1
+    bookNowFinish = 0
+    word_list = []
+    wordNowSpell = None
+    wordNowMean = None
+    SelectMeanList = []
+    UserBook = userbook.objects.filter(userid_id=userid)
+    UserBook = UserBook.values()
+    for i, info in enumerate(UserBook):
+        bkid = info["bookid_id"]
+        BookInfo = bookinfo.objects.filter(id=bkid)
+        BookInfo = BookInfo.values()
+        BookInfo = BookInfo[0]
+        bkname = BookInfo["bookname"]
         booklist.append(bkname)
-        if i==0 and book==None:
-            bookNowName=bkname
-        if bkname==bookNowName:
-            bookNowId=BookInfo["id"]
-            bookNowFinish=info["finishnum"]/BookInfo["wordnum"]*100
+        if i == 0 and book == None:
+            bookNowName = bkname
+        if bkname == bookNowName:
+            bookNowId = BookInfo["id"]
+            bookNowFinish = info["finishnum"] / BookInfo["wordnum"] * 100
     book_obj = bookinfo.objects.get(bookname=bookNowName)
     word_obj = book_obj.word.all().values("spell")
-    wrongnumlist=CreateRand(len(word_obj),0)
-    wrongmeanlist=[]
-    for i,wd in enumerate(word_obj):
+    wrongnumlist = CreateRand(len(word_obj), 0)
+    wrongmeanlist = []
+    for i, wd in enumerate(word_obj):
         if i in wrongnumlist:
             wrongmean = wordinfo.objects.filter(spell=wd["spell"]).values()[0]["mean"]
             wrongmeanlist.append(wrongmean)
         word_list.append(wd["spell"])
-    wordNowSpell=word_list[0]
-    WordInfo=wordinfo.objects.filter(spell=wordNowSpell)
-    WordInfo=WordInfo.values()
-    WordInfo=WordInfo[0]
-    wordNowMean=WordInfo["mean"]
-    rightloc=random.randint(0,2)
-    if rightloc==0:
+    len_word_list = len(word_list)
+    wordNowSpell = word_list[0]
+    WordInfo = wordinfo.objects.filter(spell=wordNowSpell)
+    WordInfo = WordInfo.values()
+    WordInfo = WordInfo[0]
+    wordNowMean = WordInfo["mean"]
+    rightloc = random.randint(0, 2)
+    if rightloc == 0:
         SelectMeanList.append(wordNowMean)
         SelectMeanList.append(wrongmeanlist[0])
         SelectMeanList.append(wrongmeanlist[1])
-    elif rightloc==1:
+    elif rightloc == 1:
         SelectMeanList.append(wrongmeanlist[0])
         SelectMeanList.append(wordNowMean)
         SelectMeanList.append(wrongmeanlist[1])
@@ -336,11 +340,115 @@ def vocabubook(request,userid,book=None):
         SelectMeanList.append(wrongmeanlist[0])
         SelectMeanList.append(wrongmeanlist[1])
         SelectMeanList.append(wordNowMean)
-    return render(request, 'vocabubook.html',locals())
+    return render(request, 'vocabubook.html', locals())
 
+def AddWord2Note(request):
+    userid = request.POST.get('userid', None)
+    notename = request.POST.get('notename', None)
+    addword = request.POST.get('addword', None)
+    Note=noteinfo.objects.filter(userid_id=userid,notename=notename)
+    NoteFirst=Note.first()
+    word=wordinfo.objects.filter(spell=addword)
+    NoteFirst.word.add(*word)
+    wordnum=NoteFirst.word.count()
+    Note.update(wordnum=wordnum)
+    return HttpResponse("添加成功")
 
-def vocabunote(request,userid,note=None):
+def vocabunote(request, userid, note=None):
+    '''
+    + 当前选择的单词本（含缺省）
+    + 当前单词及相关信息
+    + 用户全部单词本
+    + 本单词本全部单词
+    :param request:
+    :param userid:
+    :param note:
+    :return:
+    '''
+    notelist = []
+    noteNowName = note
+    noteNowId = -1
+    word_list = []
+    wordNowSpell = None
+    wordNowMean = None
+    SelectMeanList = []
+    UserNote = noteinfo.objects.filter(userid_id=userid)
+    UserNote = UserNote.values()
+    for i,info in enumerate(UserNote):
+        ntname=info["notename"]
+        ntwdnum=info["wordnum"]
+        if ntwdnum!=0:
+            notelist.append(ntname)
+        if i==0and note==None:
+            noteNowName=ntname
+        if ntname==noteNowName:
+            noteNowId=info["id"]
+    note_obj=noteinfo.objects.get(notename=noteNowName)
+    word_obj=note_obj.word.all().values("spell")
+    wrongnumlist = CreateRand(len(word_obj), 0)
+    wrongmeanlist = []
+    for i, wd in enumerate(word_obj):
+        if i in wrongnumlist:
+            wrongmean = wordinfo.objects.filter(spell=wd["spell"]).values()[0]["mean"]
+            wrongmeanlist.append(wrongmean)
+        word_list.append(wd["spell"])
+    len_word_list = len(word_list)
+    wordNowSpell = word_list[0]
+    WordInfo = wordinfo.objects.filter(spell=wordNowSpell)
+    WordInfo = WordInfo.values()
+    WordInfo = WordInfo[0]
+    wordNowMean = WordInfo["mean"]
+    rightloc = random.randint(0, 2)
+    if rightloc == 0:
+        SelectMeanList.append(wordNowMean)
+        SelectMeanList.append(wrongmeanlist[0])
+        SelectMeanList.append(wrongmeanlist[1])
+    elif rightloc == 1:
+        SelectMeanList.append(wrongmeanlist[0])
+        SelectMeanList.append(wordNowMean)
+        SelectMeanList.append(wrongmeanlist[1])
+    else:
+        SelectMeanList.append(wrongmeanlist[0])
+        SelectMeanList.append(wrongmeanlist[1])
+        SelectMeanList.append(wordNowMean)
+    return render(request, 'vocabunote.html',locals())
 
-    return render(request, 'vocabunote.html')
+def ChgNewWord(request):
+    data={}
+    newword = request.POST.get('newword', None)
+    true_mean=None
+    Select_answer=[]
+    WordInfo=wordinfo.objects.filter(spell=newword)
+    true_mean=WordInfo.values()[0]["mean"]
+    AllWordInfo = wordinfo.objects.filter(~Q(spell=newword))
+    allnum=AllWordInfo.count()
+    allindex=CreateRand(allnum,0)
+    rightloc = random.randint(0, 2)
+    if rightloc==0:
+        Select_answer.append(true_mean)
+        Select_answer.append(AllWordInfo.values()[0]["mean"])
+        Select_answer.append(AllWordInfo.values()[1]["mean"])
+    elif rightloc==1:
+        Select_answer.append(AllWordInfo.values()[0]["mean"])
+        Select_answer.append(true_mean)
+        Select_answer.append(AllWordInfo.values()[1]["mean"])
+    else:
+        Select_answer.append(AllWordInfo.values()[0]["mean"])
+        Select_answer.append(AllWordInfo.values()[1]["mean"])
+        Select_answer.append(true_mean)
+    data["true_mean"]=true_mean
+    data["Select_answer"]=Select_answer
+    data = json.dumps(data)
+    return HttpResponse(data)
 
-
+def DelWordNote(request):
+    userid = request.POST.get('userid', None)
+    notename=request.POST.get('notename', None)
+    delword=request.POST.get('delword', None)
+    Note_info=noteinfo.objects.filter(userid_id=userid,notename=notename)
+    word=wordinfo.objects.filter(spell=delword)
+    NoteFirst=Note_info.first()
+    NoteFirst.word.remove(*word)
+    wordnum = NoteFirst.word.count()
+    Note_info.update(wordnum=wordnum)
+    return HttpResponse("删除成功")

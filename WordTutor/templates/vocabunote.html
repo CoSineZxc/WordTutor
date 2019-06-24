@@ -36,18 +36,23 @@
         </div>
     </div>
     <!--内容部分-->
-    <div class="col-md-12">
+    <div>
         <div class="col-md-3">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <div class="panel-title">
-                        三月错词本
-                    </div>
+                    <div class="panel-title" id="notename">{{ noteNowName }}</div>
                 </div>
                 <div class="panel-body">
                     <div style=" overflow-y:auto; overflow-x:auto;  height:400px;">
-                        <ul class="list-group">
-                            <li class="list-group-item"><a href="#">apple</a></li>
+                        <ul class="list-group" id="wordlist">
+                            {% for i in word_list %}
+                                {% if i == wordNowSpell %}
+                                    <li class="list-group-item list-group-item-success" id="selected"><a onclick="jmp2word('{{ i }}')">{{ i }}</a></li>
+                                {% else %}
+                                    <li class="list-group-item" id="{{ i }}"><a onclick="jmp2word('{{ i }}')">{{ i }}</a></li>
+                                {% endif %}
+                            {% endfor %}
+                            <!--li class="list-group-item"><a href="#">apple</a></li>
                             <li class="list-group-item"><a href="#">banana</a></li>
                             <li class="list-group-item list-group-item-success"><a href="#">pear</a></li>
                             <li class="list-group-item"><a href="#">orange</a></li>
@@ -55,20 +60,13 @@
                             <li class="list-group-item"><a href="#">lemon</a></li>
                             <li class="list-group-item"><a href="#">strawberry</a></li>
                             <li class="list-group-item"><a href="#">watermelon</a></li>
-                            <li class="list-group-item"><a href="#">blueberry</a></li>
+                            <li class="list-group-item"><a href="#">blueberry</a></li-->
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
         <div class="col-md-6">
-            <div class="text-justify">单词本完成进度</div>
-            <div class="progress">
-                <div class="progress-bar" role="progressbar" aria-valuenow="60"
-                     aria-valuemin="0" aria-valuemax="100" style="width: 40%;">
-                    <span class="sr-only">40% 完成</span>
-                </div>
-            </div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div class="panel-title">
@@ -80,26 +78,32 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">单词读音</label>
                             <div class="col-md-10">
-                                <audio controls>
-                                    <source src="http://dict.youdao.com/dictvoice?audio=apple" type="audio/mpeg">
-                                    <source src="http://dict.youdao.com/dictvoice?audio=apple" type="audio/ogg">
-                                    <embed height="50" width="100" src="http://dict.youdao.com/dictvoice?audio=apple">
+                                <audio controls id="voice_test">
+                                    <source src="http://dict.youdao.com/dictvoice?audio={{ wordNowSpell }}" type="audio/mpeg">
+                                    <source src="http://dict.youdao.com/dictvoice?audio={{ wordNowSpell }}" type="audio/ogg">
+                                    <embed height="50" width="100"
+                                           src="http://dict.youdao.com/dictvoice?audio={{ wordNowSpell }}">
                                 </audio>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="show_spell_result">
                             <label class="col-md-2 control-label">单词拼写</label>
                             <div class="col-md-7">
-                                <input type="text" class="form-control" placeholder="请输入正确拼写"/>
+                                <input type="text" class="form-control" placeholder="请输入正确拼写" id="edt_spell"/>
                             </div>
                             <div class="col-md-3">
-                                <input type="button" class="btn btn-primary" value="提交拼写"/>
+                                <input type="button" class="btn btn-primary" value="提交拼写" onclick="check_spell()"/>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div class="form-group" id="show_mean_result">
                             <label class="col-md-2 control-label">词义选择</label>
-                            <div class="col-md-7">
-                                <div class="radio">
+                            <div class="col-md-7" id="radio_group">
+                                {% for i in SelectMeanList %}
+                                    <div class="radio">
+                                        <input type="radio" name="optionsRadios" value="{{ i }}"/>{{ i }}
+                                    </div>
+                                {% endfor %}
+                                <!--div class="radio">
                                     <label>
                                         <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
                                                checked> 词义1
@@ -116,25 +120,80 @@
                                         <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
                                         词义3
                                     </label>
-                                </div>
+                                </div-->
                             </div>
                             <div class="col-md-3">
-                                <input type="button" class="btn btn-primary" value="提交选项"/>
+                                <input type="button" class="btn btn-primary" value="提交选项" onclick="check_mean()"/>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="panel-footer">
-                    <a href="#" class="small">添加至其他单词本</a>
-                    <a href="#" class="small">从单词本中删除</a>
-                    <a href="#" class="small">显示含义</a>
+                    <a href="#" class="small" data-toggle="modal" data-target="#ChgNoteSetInfo" onclick="Init_Add2Note_popwindows()">添加至其他单词本</a>
+                    <div class="modal fade" id="ChgNoteSetInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    编辑单词本
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            已创建单词本
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div style=" overflow-y:auto; overflow-x:auto;  height:100px;">
+                                            <div class="list-group" id="table_have_note">
+                                                <!--div>
+                                                    <div class="col-xs-8">四级错词</div>
+                                                    <div class="col-xs-4"><button class='btn btn-xs' onclick=''>&times;</button></div>
+                                                </div>
+                                                <div>
+                                                    <div class="col-xs-8">三月单词</div>
+                                                    <div class="col-xs-4"><button class='btn btn-xs' onclick=''>&times;</button></div>
+                                                </div-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label>新建单词本</label>
+                                            <input type="text" class="form-control" placeholder="输入单词本名" id="newnote">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    关闭
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="add_note('{{ wordNowSpell }}')">
+                                    创建
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
+                    <a class="small" onclick="delete_word()">从单词本中删除</a>
+                    <a class="small" onclick="show_answer()">显示含义</a>
+                    <a class="small" onclick="hidden_answer()">隐藏含义</a>
                 </div>
             </div>
             <ul class="pager">
-                <li><a href="#">上一个词</a></li>
-                <li><a href="#">下一个词</a></li>
+                <li><a onclick="move2last()">上一个词</a></li>
+                <li><a onclick="move2next()">下一个词</a></li>
             </ul>
-            <div class="panel panel-default">
+            <div class="panel panel-default" id="answer">
                 <div class="panel-heading">
                     <div class="panel-title">
                         单词详解
@@ -145,31 +204,29 @@
                         <div class="form-group">
                             <label class="col-md-2 control-label">单词拼写</label>
                             <div class="col-md-10">
-                                <p>apple</p>
+                                <p id="real_spell">{{ wordNowSpell }}</p>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">单词读音</label>
                             <div class="col-md-10">
-                                <audio controls>
-                                    <source src="http://dict.youdao.com/dictvoice?audio=apple" type="audio/mpeg">
-                                    <source src="http://dict.youdao.com/dictvoice?audio=apple" type="audio/ogg">
-                                    <embed height="50" width="100" src="http://dict.youdao.com/dictvoice?audio=apple">
+                                <audio controls id="real_voice">
+                                    <source src="http://dict.youdao.com/dictvoice?audio={{ wordNowSpell }}" type="audio/mpeg">
+                                    <source src="http://dict.youdao.com/dictvoice?audio={{ wordNowSpell }}" type="audio/ogg">
+                                    <embed height="50" width="100" src="http://dict.youdao.com/dictvoice?audio={{ wordNowSpell }}">
                                 </audio>
                             </div>
                         </div>
                         <div class="form-group">
                             <label class="col-md-2 control-label">单词释义</label>
                             <div class="col-md-10">
-                                <p>
-                                    苹果呀呀呀呀呀呀晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕晕
-                                </p>
+                                <p id="real_mean">{{ wordNowMean }}</p>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="panel-footer">
-                    <a href="#" class="small">隐藏</a>
+                    <a class="small" onclick="hidden_answer()">隐藏</a>
                 </div>
             </div>
         </div>
@@ -183,14 +240,78 @@
                 <div class="panel-body">
                     <div style=" overflow-y:auto; overflow-x:auto;  height:400px;">
                         <ul class="list-group">
-                            <li class="list-group-item"><a href="#">三月错词本</a></li>
+                            {% for i in notelist %}
+                                {% if i == noteNowName %}
+                                    <li class="list-group-item list-group-item-success"><a
+                                            href="/vocabunote/{{ userid }}/{{ i }}/">{{ i }}</a></li>
+                                {% else %}
+                                    <li class="list-group-item"><a href="/vocabunote/{{ userid }}/{{ i }}/">{{ i }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            <!--li class="list-group-item"><a href="#">三月错词本</a></li>
                             <li class="list-group-item"><a href="#">四月错词本</a></li>
-                            <li class="list-group-item list-group-item-success"><a href="#">托福错词本</a></li>
+                            <li class="list-group-item list-group-item-success"><a href="#">托福错词本</a></li-->
                         </ul>
                     </div>
                 </div>
                 <div class="panel-footer">
-                    <a href="#" class="small">编辑</a>
+                    <a href="#" class="small" data-toggle="modal" data-target="#ChgNoteSetInfo"
+                       onclick="Init_note_popwindows()">编辑</a>
+                    <div class="modal fade" id="ChgNoteSetInfo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                    &times;
+                                </button>
+                                <h4 class="modal-title" id="myModalLabel">
+                                    编辑单词本
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <div class="panel-title">
+                                            已创建单词本
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <div style=" overflow-y:auto; overflow-x:auto;  height:100px;">
+                                            <div class="list-group" id="table_have_note">
+                                                <!--div>
+                                                    <div class="col-xs-8">四级错词</div>
+                                                    <div class="col-xs-4"><button class='btn btn-xs' onclick=''>&times;</button></div>
+                                                </div>
+                                                <div>
+                                                    <div class="col-xs-8">三月单词</div>
+                                                    <div class="col-xs-4"><button class='btn btn-xs' onclick=''>&times;</button></div>
+                                                </div-->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <form role="form">
+                                        <div class="form-group">
+                                            <label>新建单词本</label>
+                                            <input type="text" class="form-control" placeholder="输入单词本名" id="newnote">
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    关闭
+                                </button>
+                                <button type="button" class="btn btn-primary" onclick="add_note()">
+                                    创建
+                                </button>
+                            </div>
+                        </div><!-- /.modal-content -->
+                    </div><!-- /.modal -->
+                </div>
                 </div>
             </div>
         </div>
